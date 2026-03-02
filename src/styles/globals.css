@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-pastel-pink: #fadadd;
+    --color-pastel-mint: #b2dfdb;
+    --color-cream: #fff8f0;
+    --color-brand-primary: #e91e63;
+    --color-brand-secondary: #009688;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-pastel-cream text-gray-800 antialiased;
+  }
+
+  /* Focus visible cho accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-primary;
+  }
+}
+
+@layer components {
+  .container-tight {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+}
