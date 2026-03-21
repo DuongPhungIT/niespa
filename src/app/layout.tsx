@@ -7,6 +7,11 @@ import '@/styles/globals.css';
 
 export const metadata: Metadata = {
   ...DEFAULT_METADATA,
+  icons: {
+    icon: '/images/favicon.png',
+    shortcut: '/images/favicon.png',
+    apple: '/images/favicon.png',
+  },
 };
 
 export const viewport: Viewport = {
