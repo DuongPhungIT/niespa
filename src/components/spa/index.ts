@@ -4,3 +4,4 @@ export { SpaHomeServices } from './SpaHomeServices';
 export { SpaWhyChoose } from './SpaWhyChoose';
 export { SpaTestimonials } from './SpaTestimonials';
 export { SpaCTA } from './SpaCTA';
+export { MommyLanding } from './MommyLanding';

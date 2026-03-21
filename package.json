@@ -2,6 +2,7 @@
   "name": "mom-and-son",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "npm@10.9.2",
   "description": "Website bán hàng MẸ & BÉ - Next.js App Router, TypeScript, TailwindCSS",
   "scripts": {
     "dev": "next dev",

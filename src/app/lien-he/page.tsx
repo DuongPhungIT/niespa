@@ -1,33 +1,73 @@
+import Link from 'next/link';
 import { buildPageMetadata } from '@/utils/seo';
 import { ROUTES } from '@/constants';
-import { ContactHero, ContactInfo, ContactForm } from '@/components/contact';
 import type { Metadata } from 'next';
+import { SITE_CONFIG } from '@/config/site';
+import { branches } from '@/components/spa/mommyData';
 
 export const metadata: Metadata = buildPageMetadata({
-  title: 'Liên hệ | NieSpa – Chăm sóc mẹ và bé',
+  title: 'Liên hệ | NieSpa',
   description:
-    'Liên hệ NieSpa – Tư vấn và đặt lịch dịch vụ chăm sóc mẹ bầu, sau sinh, tắm & massage bé. Hotline 0901 460 922 (Miss Nhiên).',
+    'Liên hệ NieSpa để được tư vấn, đặt lịch chăm sóc mẹ bầu, mẹ sau sinh và bé.',
   path: ROUTES.contact,
 });
 
 export default function LienHePage() {
   return (
-    <>
-      <ContactHero />
-      <section
-        className="py-12 md:py-16"
-        aria-labelledby="contact-content-heading"
-      >
+    <div className="bg-[#f7fcff] text-[#234e70]">
+      <section className="border-b border-[#e5dacb] bg-[#253126] py-16 text-white md:py-24">
         <div className="container-tight">
-          <h2 id="contact-content-heading" className="sr-only">
-            Thông tin liên hệ và form gửi tin nhắn
-          </h2>
-          <div className="grid min-w-0 grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-10 lg:items-stretch">
-            <ContactInfo />
-            <ContactForm />
+          <p className="type-overline text-white/82">
+            Liên hệ
+          </p>
+          <h1 className="type-display-page mt-4 max-w-4xl text-white">
+            Đặt lịch để đội ngũ chọn cho bạn chi nhánh và liệu trình phù hợp nhất.
+          </h1>
+          <p className="type-body-lg mt-6 max-w-3xl text-white/82">
+            Liên hệ ngay để được hướng dẫn chọn gói chăm sóc, cơ sở phù hợp và thời gian đặt lịch
+            thuận tiện nhất cho mẹ.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24">
+        <div className="container-tight grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="rounded-[34px] border border-[#e7dccd] bg-white p-7 shadow-sm">
+            <h2 className="type-display-section">Thông tin nhanh</h2>
+            <div className="type-meta mt-6 space-y-4">
+              <p>Hotline: {SITE_CONFIG.phoneDisplay}</p>
+              <p>Email: info@niespa.vn</p>
+              <p>Giờ mở cửa: 9:30 - 20:00, từ thứ 2 đến chủ nhật</p>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <a
+                href={`tel:${SITE_CONFIG.phone}`}
+                className="type-button rounded-full bg-brand-secondary px-6 py-3 text-white"
+              >
+                Gọi tư vấn ngay
+              </a>
+              <Link
+                href="/#chi-nhanh"
+                className="type-button rounded-full border border-[#d6e8f6] px-6 py-3 text-[#234e70]"
+              >
+                Xem chi nhánh
+              </Link>
+            </div>
+          </div>
+
+          <div className="rounded-[34px] border border-[#e7dccd] bg-[#f4ecdf] p-7 shadow-sm">
+            <h2 className="type-display-section">Chi nhánh phục vụ</h2>
+            <div className="mt-6 grid gap-5 md:grid-cols-2">
+              {branches.map((branch) => (
+                <div key={branch.region} className="rounded-[24px] bg-white p-5">
+                  <h3 className="text-lg font-semibold text-[#234e70]">{branch.region}</h3>
+                  <p className="type-meta mt-3">{branch.locations[0]}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

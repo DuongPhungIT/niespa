@@ -1,22 +1,8 @@
 import Link from 'next/link';
-import { ROUTES } from '@/constants';
 import { SITE_CONFIG } from '@/config/site';
+import { ROUTES } from '@/constants';
+import { branches, policyLinks } from '@/components/spa/mommyData';
 import { Logo } from './Logo';
-
-const footerLinks = {
-  muaSam: [
-    { href: ROUTES.products, label: 'Sản phẩm' },
-    { href: ROUTES.category('sua-bot'), label: 'Sữa bột' },
-    { href: ROUTES.category('ta-bim'), label: 'Tã bỉm' },
-    { href: ROUTES.category('do-choi'), label: 'Đồ chơi' },
-  ],
-  hoTro: [
-    { href: ROUTES.spa, label: 'Spa mẹ và bé' },
-    { href: ROUTES.about, label: 'Giới thiệu' },
-    { href: ROUTES.contact, label: 'Liên hệ' },
-    { href: ROUTES.blog, label: 'Blog' },
-  ],
-};
 
 function IconFacebook({ className }: { className?: string }) {
   return (
@@ -52,113 +38,103 @@ function IconPhone({ className }: { className?: string }) {
 
 export function Footer() {
   return (
-    <footer className="border-t border-pastel-pink/50 bg-gradient-to-b from-pastel-mint-light/40 via-pastel-cream/60 to-white">
-      <div className="container-tight w-full max-w-6xl px-4 py-12 sm:px-6 md:py-14">
-        {/* Main: 3 cột cân bằng, dùng full width */}
-        <div className="grid w-full grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-0">
-          {/* Cột 1: Brand + mô tả + hotline + mạng xã hội */}
-          <div className="min-w-0 sm:col-span-2 lg:col-span-5">
-            <div className="flex items-center">
-              <Logo />
-            </div>
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-gray-600">
+    <footer className="border-t border-[#e2eef7] bg-[#f7fbff]">
+      <div className="container-tight py-14 md:py-16">
+        <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr_0.9fr]">
+          <div>
+            <Logo />
+            <p className="type-meta mt-5 max-w-md">
               {SITE_CONFIG.description}
             </p>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+            <div className="type-meta mt-6 space-y-3">
+              <p>CÔNG TY CỔ PHẦN THƯƠNG MẠI DỊCH VỤ NIESPA</p>
+              <p>Trụ sở chính: 16 Phạm Đình Toái, Xuân Hòa, TP.HCM</p>
+              <p>Email: info@niespa.vn</p>
               <a
                 href={`tel:${SITE_CONFIG.phone}`}
-                className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-brand-primary shadow-md ring-1 ring-pastel-pink/50 transition hover:bg-pastel-pink/25 hover:shadow-sm"
+                className="type-button inline-flex items-center gap-2 rounded-full border border-[#d6e8f6] bg-white px-4 py-2.5 text-[#234e70]"
               >
-                <IconPhone className="h-4 w-4 shrink-0" />
-                <span>{SITE_CONFIG.phoneDisplay}</span>
+                <IconPhone className="h-4 w-4" />
+                {SITE_CONFIG.phoneDisplay}
               </a>
-              <div className="flex items-center gap-2">
-                <a
-                  href={SITE_CONFIG.links.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-gray-500 shadow-md ring-1 ring-gray-200/80 transition hover:bg-[#1877f2] hover:text-white hover:ring-[#1877f2]/40"
-                  aria-label="Facebook"
-                >
-                  <IconFacebook className="h-5 w-5" />
-                </a>
-                <a
-                  href={SITE_CONFIG.links.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-gray-500 shadow-md ring-1 ring-gray-200/80 transition hover:bg-gradient-to-br hover:from-[#f58529] hover:via-[#dd2a7b] hover:to-[#8134af] hover:text-white hover:ring-pink-300/40"
-                  aria-label="Instagram"
-                >
-                  <IconInstagram className="h-5 w-5" />
-                </a>
-                <a
-                  href={SITE_CONFIG.links.zalo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-gray-500 shadow-md ring-1 ring-gray-200/80 transition hover:bg-[#0068ff] hover:text-white hover:ring-[#0068ff]/40"
-                  aria-label="Zalo"
-                >
-                  <IconZalo className="h-5 w-5" />
-                </a>
-              </div>
             </div>
           </div>
 
-          {/* Cột 2: Mua sắm */}
-          <div className="min-w-0 lg:col-span-3">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-brand-primary">
-              Mua sắm
+          <div>
+            <h3 className="type-overline text-[#66aecd]">
+              Thông tin
             </h3>
-            <ul className="mt-4 space-y-2.5">
-              {footerLinks.muaSam.map(({ href, label }) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className="text-sm text-gray-600 transition hover:text-brand-primary"
-                  >
-                    {label}
-                  </Link>
-                </li>
+            <ul className="type-meta mt-5 space-y-3">
+              <li>
+                <Link href={ROUTES.about} className="transition hover:text-[#234e70]">
+                  Giới thiệu NieSpa
+                </Link>
+              </li>
+              <li>
+                <Link href="/#dich-vu" className="transition hover:text-[#234e70]">
+                  Dịch vụ
+                </Link>
+              </li>
+              <li>
+                <Link href="/#chi-nhanh" className="transition hover:text-[#234e70]">
+                  Danh sách chi nhánh
+                </Link>
+              </li>
+              {policyLinks.map((policy) => (
+                <li key={policy}>{policy}</li>
               ))}
             </ul>
           </div>
 
-          {/* Cột 3: Hỗ trợ */}
-          <div className="min-w-0 lg:col-span-4">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-brand-primary">
-              Hỗ trợ
+          <div>
+            <h3 className="type-overline text-[#66aecd]">
+              Chi nhánh nổi bật
             </h3>
-            <ul className="mt-4 space-y-2.5">
-              {footerLinks.hoTro.map(({ href, label }) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className="text-sm text-gray-600 transition hover:text-brand-primary"
-                  >
-                    {label}
-                  </Link>
+            <ul className="type-meta mt-5 space-y-5">
+              {branches.slice(0, 3).map((branch) => (
+                <li key={branch.region}>
+                  <div className="font-semibold text-[#234e70]">{branch.region}</div>
+                  <div>{branch.locations[0]}</div>
                 </li>
               ))}
             </ul>
+            <div className="mt-6 flex items-center gap-3">
+              <a
+                href={SITE_CONFIG.links.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d6e8f6] bg-white text-[#70879d] transition hover:bg-[#78c6e3] hover:text-white"
+                aria-label="Facebook"
+              >
+                <IconFacebook className="h-4 w-4" />
+              </a>
+              <a
+                href={SITE_CONFIG.links.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d6e8f6] bg-white text-[#70879d] transition hover:bg-[#78c6e3] hover:text-white"
+                aria-label="Instagram"
+              >
+                <IconInstagram className="h-4 w-4" />
+              </a>
+              <a
+                href={SITE_CONFIG.links.zalo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d6e8f6] bg-white text-[#70879d] transition hover:bg-[#78c6e3] hover:text-white"
+                aria-label="Zalo"
+              >
+                <IconZalo className="h-4 w-4" />
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* Bottom: chỉ copyright + social nhỏ, không trùng link */}
-        <div className="mt-10 flex w-full flex-col items-center justify-between gap-3 border-t border-pastel-pink/40 pt-6 sm:flex-row">
-          <p className="text-center text-sm text-gray-500">
-            © {new Date().getFullYear()} {SITE_CONFIG.name}. Bảo lưu mọi quyền.
+        <div className="type-meta mt-10 flex flex-col gap-3 border-t border-[#e2d6c6] pt-6 md:flex-row md:items-center md:justify-between">
+          <p>
+            Copyright © {new Date().getFullYear()} {SITE_CONFIG.name}. Bảo lưu mọi quyền.
           </p>
-          <div className="flex items-center gap-3">
-            <a href={SITE_CONFIG.links.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-400 transition hover:text-brand-primary" aria-label="Facebook">
-              <IconFacebook className="h-4 w-4" />
-            </a>
-            <a href={SITE_CONFIG.links.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 transition hover:text-brand-primary" aria-label="Instagram">
-              <IconInstagram className="h-4 w-4" />
-            </a>
-            <a href={SITE_CONFIG.links.zalo} target="_blank" rel="noopener noreferrer" className="text-gray-400 transition hover:text-brand-primary" aria-label="Zalo">
-              <IconZalo className="h-4 w-4" />
-            </a>
-          </div>
+          <p>Giờ mở cửa: 9:30 - 20:00, từ thứ 2 đến chủ nhật.</p>
         </div>
       </div>
     </footer>

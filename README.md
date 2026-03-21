@@ -9,13 +9,12 @@ Xem [STRUCTURE.md](./STRUCTURE.md) để biết nhiệm vụ từng folder.
 ## Yêu cầu
 
 - Node.js 18+
-- pnpm / npm / yarn
+- npm 10+
 
 ## Cài đặt
 
 ```bash
-pnpm install
-# hoặc npm install
+npm install
 ```
 
 ## Biến môi trường
@@ -30,7 +29,7 @@ Copy `.env.example` thành `.env.local` và điền:
 ## Chạy dev
 
 ```bash
-pnpm dev
+npm run dev
 ```
 
 Mở [http://localhost:3000](http://localhost:3000).
@@ -38,15 +37,15 @@ Mở [http://localhost:3000](http://localhost:3000).
 ## Build production
 
 ```bash
-pnpm build
-pnpm start
+npm run build
+npm run start
 ```
 
 ## Lint & Format
 
 ```bash
-pnpm lint
-pnpm format
+npm run lint
+npm run format
 ```
 
 ## Tính năng đã có
