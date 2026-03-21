@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SITE_CONFIG } from '@/config/site';
@@ -45,9 +45,11 @@ function SectionHeading({
 
 export function MommyLanding() {
   const statEyebrows = ['Kinh nghiệm', 'Khách hàng', 'Chi nhánh'];
+  const productCarouselRef = useRef<HTMLDivElement | null>(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [previewSlideIndex, setPreviewSlideIndex] = useState(heroSlides.length > 1 ? 1 : 0);
   const [isPageTurning, setIsPageTurning] = useState(false);
+  const [isProductCarouselPaused, setIsProductCarouselPaused] = useState(false);
 
   useEffect(() => {
     if (heroSlides.length <= 1) {
@@ -81,6 +83,51 @@ export function MommyLanding() {
     setPreviewSlideIndex((previewSlideIndex + 1) % heroSlides.length);
     setIsPageTurning(false);
   };
+
+  const scrollProducts = (direction: 'prev' | 'next') => {
+    if (!productCarouselRef.current) {
+      return;
+    }
+
+    const track = productCarouselRef.current;
+    const card = track.querySelector<HTMLElement>('[data-product-card]');
+    const scrollAmount = card ? card.offsetWidth + 24 : 320;
+
+    track.scrollBy({
+      left: direction === 'next' ? scrollAmount : -scrollAmount,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    if (!productCarouselRef.current || isProductCarouselPaused) {
+      return;
+    }
+
+    const intervalId = window.setInterval(() => {
+      const track = productCarouselRef.current;
+
+      if (!track) {
+        return;
+      }
+
+      const card = track.querySelector<HTMLElement>('[data-product-card]');
+      const scrollAmount = card ? card.offsetWidth + 24 : 320;
+      const isAtEnd =
+        track.scrollLeft + track.clientWidth >= track.scrollWidth - scrollAmount / 2;
+
+      if (isAtEnd) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+        return;
+      }
+
+      track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }, 3600);
+
+    return () => {
+      window.clearInterval(intervalId);
+    };
+  }, [isProductCarouselPaused]);
 
   return (
     <div className="bg-[#f7fcff] text-[#234e70]">
@@ -169,7 +216,7 @@ export function MommyLanding() {
         <div className="container-tight grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div className="relative min-h-[420px] overflow-hidden rounded-[36px]">
             <Image
-              src="https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=1400&q=80"
+              src="https://lisanail.vn/wp-content/uploads/2024/03/spa-cham-soc-cho-me-va-be-sau-sinh.jpg"
               alt="Không gian spa xanh và thư giãn"
               fill
               sizes="(max-width: 1024px) 100vw, 45vw"
@@ -209,7 +256,7 @@ export function MommyLanding() {
           <div className="rounded-[36px] border border-[#dbeaf6] bg-[#f4fbff] p-6 shadow-[0_20px_50px_rgba(120,198,227,0.08)] md:p-8">
             <div className="relative min-h-[360px] overflow-hidden rounded-[28px]">
               <Image
-                src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1400&q=80"
+                src="https://mommyspa.vn/vnt_upload/news/07_2025/Post_FB.png"
                 alt="Chứng nhận và chuẩn chất lượng"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -235,31 +282,38 @@ export function MommyLanding() {
             {standoutServices.map((service) => (
               <article
                 key={service.title}
-                className="overflow-hidden rounded-[34px] border border-[#dbeaf6] bg-white shadow-[0_22px_55px_rgba(120,198,227,0.08)]"
+                className="group overflow-hidden rounded-[36px] border border-[#dbeaf6] bg-white shadow-[0_20px_48px_rgba(120,198,227,0.08)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_26px_62px_rgba(120,198,227,0.14)]"
               >
-                <div className="relative min-h-[300px]">
+                <div className="relative min-h-[360px]">
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 80vw"
+                    className="object-cover transition duration-700 group-hover:scale-[1.04]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#234e70]/72 via-[#234e70]/20 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-7 text-white md:p-8">
-                    <p className="type-label text-[#d9f3ff]">
-                      {service.eyebrow}
-                    </p>
-                    <h3 className="type-display-card mt-3 text-white md:text-[2.4rem]">{service.title}</h3>
-                    <p className="type-meta mt-4 max-w-xl text-white/88">
-                      {service.description}
-                    </p>
-                    <Link
-                      href={ROUTES.contact}
-                      className="type-button mt-6 inline-flex rounded-full bg-white px-5 py-2.5 text-[#234e70]"
-                    >
-                      {service.cta}
-                    </Link>
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,52,76,0.06)_0%,rgba(17,52,76,0.18)_34%,rgba(17,52,76,0.74)_100%)]" />
+                  <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
+                    <div className="mx-auto max-w-[30rem] rounded-[12px] border border-white/18 bg-[linear-gradient(180deg,rgba(13,41,61,0.09)_0%,rgba(13,41,61,0.18)_100%)] p-6 text-white shadow-[0_18px_40px_rgba(10,33,49,0.16)] backdrop-blur-md md:p-7">
+                      <p className="text-[0.76rem] font-semibold uppercase tracking-[0.24em] text-[#cdefff]">
+                        {service.eyebrow}
+                      </p>
+                      <h3 className="text-[clamp(1.3rem,2.2vw,2.3rem)] font-semibold text-white [font-family:'Dancing_Script','Brush_Script_MT',cursive]">
+                        {service.title}
+                      </h3>
+                      <p className="max-w-[28rem] text-[0.8rem] italic leading-7 text-white/82">
+                        {service.description}
+                      </p>
+                      <div className="flex items-center gap-4">
+                        <div className="hidden h-px flex-1 bg-[linear-gradient(90deg,rgba(205,239,255,0.36)_0%,rgba(205,239,255,0)_100%)] sm:block" />
+                        <Link
+                          href={ROUTES.contact}
+                          className="type-button inline-flex rounded-full border border-white/70 bg-white/92 px-5 py-2.5 text-[#ffffff] transition hover:bg-white"
+                        >
+                          {service.cta}
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </article>
@@ -270,40 +324,77 @@ export function MommyLanding() {
 
       <section id="san-pham" className="screen-section border-y border-[#e2eef7] bg-[#f4fbff]">
         <div className="container-tight">
-          <SectionHeading
-            eyebrow="Sản phẩm tiêu biểu"
-            title="Những sản phẩm chăm sóc được nhiều mẹ yêu thích."
-            description="Các dòng sản phẩm hỗ trợ làm sạch, phục hồi da và chăm sóc tóc phù hợp cho giai đoạn mang thai và sau sinh."
-          />
-          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <SectionHeading
+              eyebrow="Sản phẩm tiêu biểu"
+              title="Những sản phẩm chăm sóc được nhiều mẹ yêu thích."
+              description="Các dòng sản phẩm hỗ trợ làm sạch, phục hồi da và chăm sóc tóc phù hợp cho giai đoạn mang thai và sau sinh."
+            />
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => scrollProducts('prev')}
+                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#dbeaf6] bg-white text-[#5f9fbe] shadow-[0_12px_28px_rgba(120,198,227,0.08)] transition hover:border-[#9bd5ec] hover:text-[#2b567d]"
+                aria-label="Xem sản phẩm trước"
+              >
+                &#8592;
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollProducts('next')}
+                className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#dbeaf6] bg-white text-[#5f9fbe] shadow-[0_12px_28px_rgba(120,198,227,0.08)] transition hover:border-[#9bd5ec] hover:text-[#2b567d]"
+                aria-label="Xem sản phẩm tiếp"
+              >
+                &#8594;
+              </button>
+            </div>
+          </div>
+          <div
+            ref={productCarouselRef}
+            onMouseEnter={() => setIsProductCarouselPaused(true)}
+            onMouseLeave={() => setIsProductCarouselPaused(false)}
+            className="mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
             {featuredProducts.map((product) => (
               <article
                 key={product.name}
-                className="rounded-[28px] border border-[#dbeaf6] bg-white p-4 shadow-[0_18px_40px_rgba(120,198,227,0.08)]"
+                data-product-card
+                className="group min-w-[280px] snap-start rounded-[30px] border border-[#dbeaf6] bg-white p-4 shadow-[0_18px_40px_rgba(120,198,227,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_48px_rgba(120,198,227,0.12)] sm:min-w-[320px] lg:min-w-[340px]"
               >
-                <div className="relative min-h-[220px] overflow-hidden rounded-[22px] bg-[#f0f9ff]">
+                <div className="relative min-h-[280px] overflow-hidden rounded-[24px] bg-[linear-gradient(180deg,#f4fbff_0%,#e7f6ff_100%)]">
                   <Image
                     src={product.image}
                     alt={product.name}
                     fill
-                    sizes="(max-width: 1280px) 50vw, 20vw"
-                    className="object-cover"
+                    sizes="(max-width: 1024px) 80vw, 340px"
+                    className="object-cover transition duration-700 group-hover:scale-[1.04]"
                   />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(31,76,110,0.12)_100%)]" />
                 </div>
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-5 flex flex-wrap gap-2">
                   {product.badges.map((badge) => (
                     <span
                       key={badge}
-                      className="type-label rounded-full bg-[#edf7fd] px-3 py-1 text-[#66aecd]"
+                      className="rounded-full border border-[#d8ecf7] bg-[#f4fbff] px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#78b8d3]"
                     >
                       {badge}
                     </span>
                   ))}
                 </div>
-                <h3 className="mt-4 line-clamp-2 text-lg font-semibold leading-7 text-[#234e70]">
+                <h3 className="mt-4 line-clamp-2 text-[1.2rem] font-semibold leading-8 text-[#234e70]">
                   {product.name}
                 </h3>
-                <p className="type-display-card mt-3 text-[#78c6e3]">{product.price}</p>
+                <div className="mt-5 flex items-center justify-between gap-4">
+                  <p className="text-[1.4rem] font-semibold tracking-[-0.01em] text-[#5fb7d8]">
+                    {product.price}
+                  </p>
+                  <Link
+                    href={ROUTES.contact}
+                    className="inline-flex rounded-full border border-[#dbeaf6] px-4 py-2 text-[0.82rem] font-semibold tracking-[0.08em] text-[#2b567d] transition hover:border-[#9bd5ec] hover:bg-[#f4fbff]"
+                  >
+                    Xem thêm
+                  </Link>
+                </div>
               </article>
             ))}
           </div>

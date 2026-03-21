@@ -13,7 +13,7 @@ export const heroSlides = [
     description:
       'Không gian thư giãn xanh, liệu trình chuẩn y khoa và đội ngũ kỹ thuật viên tận tâm giúp mẹ hồi phục thể chất lẫn tinh thần.',
     image:
-      'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=1400&q=80',
+      'https://giadinh.mediacdn.vn/2020/1/6/photo-1-1578298823767246269404.jpg',
   },
   {
     title: 'Thư giãn sâu trong từng chạm nhẹ',
@@ -21,7 +21,7 @@ export const heroSlides = [
     description:
       'Những gói massage và chăm sóc cơ thể được thiết kế để mẹ cảm thấy nhẹ lưng, dễ ngủ và an tâm hơn trong suốt thai kỳ.',
     image:
-      'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=1400&q=80',
+      'https://posapp.vn/kinh-doanh-spa-me-va-be',
   },
   {
     title: 'Hồi phục dịu êm sau những ngày đầu làm mẹ',
@@ -29,7 +29,7 @@ export const heroSlides = [
     description:
       'Từ massage phục hồi, chăm sóc bụng đến thư giãn tinh thần, mỗi bước đều hướng đến sự nâng niu và hồi phục tự nhiên cho mẹ.',
     image:
-      'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=1400&q=80',
+      'https://rosespa.com.vn/wp-content/uploads/2025/06/Cham-Soc-Me-Va-Be-Sau-Sinh-Tai-Nha-Toan-Dien-%E2%80%93-Chi-199K-150-Phut-Tu-Rose-Spa-2.png',
   },
   {
     title: 'Không gian riêng tư ấm áp và an lành',
@@ -45,7 +45,7 @@ export const heroSlides = [
     description:
       'Không chỉ tại spa, đội ngũ còn mang liệu trình đến tận nhà để mẹ được chăm sóc đúng giai đoạn với sự riêng tư và tiện lợi.',
     image:
-      'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=1400&q=80',
+      'https://khamphahue.com.vn/Portals/0/Hue24h/DoanhNghiep/MeXinhSpa/Khamphahue_Me-Xinh-Spa_Spa-cho-me-va-be_dich-vu-cham-soc-ba-bau-sau-sinh_dich-vu-cham-soc-sau-sinh-tai-Hue_05.jpg',
   },
 ] as const;
 
@@ -72,7 +72,7 @@ export const standoutServices = [
       'Ứng dụng công nghệ INDIBA trong chăm sóc da và phục hồi cơ thể giúp săn chắc, tái tạo và thư giãn sâu mà vẫn dịu nhẹ.',
     cta: 'Khám phá dịch vụ',
     image:
-      'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=1200&q=80',
+      'https://la-perla.net/wp-content/uploads/2020/04/indiba-facial-tratamiento-regenerador-celular-antiarrugas-600x405.jpg',
   },
   {
     eyebrow: 'Dịch vụ chuẩn y khoa',
@@ -81,7 +81,7 @@ export const standoutServices = [
       'Liệu trình massage bầu, giảm đau lưng, phù nề và cân bằng tinh thần để mẹ được nâng niu suốt thai kỳ trong sự an tâm.',
     cta: 'Khám phá dịch vụ',
     image:
-      'https://images.unsplash.com/photo-1544161515-4ab6f6ff7af0?w=1200&q=80',
+      'https://baocamau.vn/image/news/2022/20220117/fckimage/csmvb-1.jpg',
   },
   {
     eyebrow: 'Dịch vụ đặc sắc',
@@ -90,7 +90,7 @@ export const standoutServices = [
       'Đội ngũ đến tận nơi để hỗ trợ phục hồi cơ thể, chăm sóc bụng, massage thư giãn và đồng hành cùng những ngày đầu của mẹ bỉm.',
     cta: 'Xem ngay',
     image:
-      'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=1200&q=80',
+      'https://homecaresausinh.com/dich-vu-tam-be-so-sinh-tai-nha-tphcm/381633105_699602515534966_7507709928366767203_n/',
   },
   {
     eyebrow: 'Dịch vụ đặc sắc',
@@ -99,7 +99,7 @@ export const standoutServices = [
       'Gói dịch vụ chuyên biệt giúp mẹ dễ chịu hơn trong giai đoạn sau sinh, đồng thời hỗ trợ bé bằng quy trình tắm và massage chuẩn.',
     cta: 'Xem ngay',
     image:
-      'https://images.unsplash.com/photo-1517685352821-92cf88aee5a5?w=1200&q=80',
+      'https://hih.vn/wp-content/uploads/2019/01/Th%C3%B4ng-t%E1%BA%AFc-tia-s%E1%BB%AFa.jpg',
   },
 ] as const;
 
@@ -109,21 +109,21 @@ export const featuredProducts = [
     price: '590.000 đ',
     badges: ['mới', 'nổi bật'],
     image:
-      'https://images.unsplash.com/photo-1556228578-dd6f2d6d8c57?w=900&q=80',
+      'https://decumar.vn/wp-content/themes/yootheme/cache/a1/SRM-THC-6-a1f44357.png',
   },
   {
     name: 'Serum tái tạo da và chống ánh sáng xanh',
     price: '840.000 đ',
     badges: ['mới', 'bán chạy'],
     image:
-      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=900&q=80',
+      'https://media.hcdn.vn/catalog/product/g/o/google-shopping-serum-caryophy-giam-mun-mo-tham-se-lo-chan-long-30ml-2_img_450x450_31d6f9_fit_center.jpg',
   },
   {
     name: 'Serum dưỡng tóc bưởi và vitamin E',
     price: '180.000 đ',
     badges: ['nổi bật'],
     image:
-      'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=900&q=80',
+      'https://down-vn.img.susercontent.com/file/sg-11134201-82253-mhczk7yo816x8d@resize_w450_nl.webp',
   },
   {
     name: 'Dầu gội thảo mộc phục hồi chân tóc',
