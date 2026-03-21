@@ -28,10 +28,16 @@ function SectionHeading({
 }) {
   return (
     <div className="max-w-3xl">
-      <p className="type-overline">{eyebrow}</p>
-      <h2 className="type-display-section mt-3">{title}</h2>
+      <div className="inline-flex text-[clamp(1.8rem,2.4vw,2.5rem)] font-semibold leading-none text-[#7dc4df] [font-family:'Dancing_Script','Brush_Script_MT',cursive]">
+        {eyebrow}
+      </div>
+      <div className="mt-3 text-[18px] text-[#2b567d]">
+        {title}
+      </div>
       {description ? (
-        <p className="type-body mt-4 md:text-body-lg">{description}</p>
+        <p className="mt-5 max-w-2xl text-[16px] italic text-[#6a8094]">
+          {description}
+        </p>
       ) : null}
     </div>
   );
@@ -176,23 +182,17 @@ export function MommyLanding() {
               title="Không chỉ là spa, đây là hệ sinh thái chăm sóc dành riêng cho phụ nữ mang thai và sau sinh."
               description="Chúng tôi xây dựng hành trình chăm sóc dành riêng cho mẹ đang mang thai, mẹ sau sinh và bé bằng dịch vụ tại spa, dịch vụ tại nhà và đội ngũ tư vấn đồng hành xuyên suốt."
             />
-            <p className="type-body mt-6">
+            <div className="mt-5 max-w-2xl text-[16px] italic text-[#6a8094]">
               Từ khâu tư vấn, trị liệu đến chăm sóc tại nhà, mọi điểm chạm đều hướng đến sự an tâm,
               riêng tư và hồi phục dịu dàng cho mẹ. Không gian ưu tiên ánh sáng ấm, chất liệu mộc
               và cảm giác thư giãn đúng với tinh thần một spa dành cho mẹ và bé.
-            </p>
+            </div>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href={ROUTES.about}
                 className="type-button rounded-full bg-[#234e70] px-6 py-3 text-white transition hover:bg-[#1d425f]"
               >
                 Xem thêm
-              </Link>
-              <Link
-                href="/#chi-nhanh"
-                className="type-button rounded-full border border-[#d6e8f6] px-6 py-3 text-[#66aecd] transition hover:bg-[#f2f9ff]"
-              >
-                Danh sách chi nhánh
               </Link>
             </div>
           </div>
