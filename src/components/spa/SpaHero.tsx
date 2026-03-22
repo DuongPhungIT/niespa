@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ROUTES, IMAGES } from '@/constants';
+import { IMAGES } from '@/constants';
+import { BookingButton } from '@/components/booking';
 
 /**
  * Hero trang chủ – Chăm sóc mẹ và bé. Ấn tượng, rõ thương hiệu.
@@ -44,12 +45,12 @@ export function SpaHero() {
               niu bằng cả trái tim.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4 lg:justify-start">
-              <Link
-                href={ROUTES.contact}
+              <BookingButton
+                source="spa-hero"
                 className="inline-flex rounded-full bg-brand-primary px-8 py-3.5 font-semibold text-white shadow-lg transition hover:bg-brand-primary/90 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2"
               >
                 Tìm hiểu thêm
-              </Link>
+              </BookingButton>
               <Link
                 href="tel:0901460922"
                 className="inline-flex rounded-full border-2 border-brand-secondary bg-white px-8 py-3.5 font-semibold text-brand-secondary transition hover:bg-pastel-mint-light"

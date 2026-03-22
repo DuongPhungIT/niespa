@@ -3,6 +3,7 @@ import { buildPageMetadata } from '@/utils/seo';
 import { ROUTES } from '@/constants';
 import type { Metadata } from 'next';
 import { SITE_CONFIG } from '@/config/site';
+import { BookingForm } from '@/components/booking';
 import { branches } from '@/components/spa/mommyData';
 
 export const metadata: Metadata = buildPageMetadata({
@@ -55,6 +56,16 @@ export default function LienHePage() {
             </div>
           </div>
 
+          <div className="rounded-[34px] border border-[#dbeaf6] bg-[linear-gradient(180deg,#f7fcff_0%,#eef8ff_100%)] p-7 shadow-sm">
+            <h2 className="type-display-section">Form đặt lịch</h2>
+            <p className="mt-3 text-[0.98rem] italic text-[#6a8094]">
+              Điền thông tin bên dưới, đội ngũ NieSpa sẽ liên hệ để xác nhận dịch vụ, thời gian và chi nhánh phù hợp.
+            </p>
+            <BookingForm source="contact-page" submitLabel="Gửi yêu cầu đặt lịch" className="mt-6" />
+          </div>
+        </div>
+
+        <div className="container-tight mt-6">
           <div className="rounded-[34px] border border-[#e7dccd] bg-[#f4ecdf] p-7 shadow-sm">
             <h2 className="type-display-section">Chi nhánh phục vụ</h2>
             <div className="mt-6 grid gap-5 md:grid-cols-2">

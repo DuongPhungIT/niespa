@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ROUTES } from '@/constants';
+import { BookingButton } from '@/components/booking';
 
 /**
  * CTA trang Giới thiệu – Liên hệ / Đặt lịch.
@@ -25,12 +26,12 @@ export function AboutCTA() {
           >
             Gọi ngay
           </a>
-          <Link
-            href={ROUTES.contact}
+          <BookingButton
+            source="about-cta"
             className="rounded-full border-2 border-white bg-white/5 px-8 py-3.5 font-semibold backdrop-blur-sm transition hover:bg-white/15"
           >
             Liên hệ / Đặt lịch
-          </Link>
+          </BookingButton>
           <Link
             href={ROUTES.spa}
             className="rounded-full border-2 border-white/80 bg-transparent px-8 py-3.5 font-semibold transition hover:bg-white/10"

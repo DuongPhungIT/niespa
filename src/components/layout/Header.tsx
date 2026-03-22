@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ROUTES } from '@/constants';
+import { BookingButton } from '@/components/booking';
 import { cn } from '@/lib/cn';
 import { Logo } from './Logo';
 
@@ -121,12 +122,12 @@ export function Header() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-3">
-          <Link
-            href={ROUTES.contact}
+          <BookingButton
+            source="header"
             className="rounded-full bg-[#78c6e3] px-8 py-2 text-[0.95rem] font-semibold text-white shadow-[0_12px_28px_rgba(120,198,227,0.22)] transition hover:bg-[#63badb]"
           >
             Đặt lịch
-          </Link>
+          </BookingButton>
         </div>
       </div>
     </header>

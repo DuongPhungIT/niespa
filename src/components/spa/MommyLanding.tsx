@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { BookingButton } from '@/components/booking';
 import { SITE_CONFIG } from '@/config/site';
 import { ROUTES } from '@/constants';
 import { cn } from '@/lib/cn';
@@ -151,12 +152,12 @@ export function MommyLanding() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href={ROUTES.contact}
+                <BookingButton
+                  source="hero"
                   className="type-button rounded-full bg-[#78c6e3] px-7 py-3.5 text-white shadow-[0_12px_28px_rgba(120,198,227,0.24)] transition hover:bg-[#5fb7d8]"
                 >
                   Đặt lịch ngay
-                </Link>
+                </BookingButton>
                 <a
                   href={`tel:${SITE_CONFIG.phone}`}
                   className="type-button rounded-full border border-[#d6e8f6] bg-white px-7 py-3.5 text-[#234e70] shadow-[0_10px_24px_rgba(35,78,112,0.06)] transition hover:border-[#78c6e3] hover:bg-[#f2f9ff]"
@@ -306,12 +307,12 @@ export function MommyLanding() {
                       </p>
                       <div className="flex items-center gap-4">
                         <div className="hidden h-px flex-1 bg-[linear-gradient(90deg,rgba(205,239,255,0.36)_0%,rgba(205,239,255,0)_100%)] sm:block" />
-                        <Link
-                          href={ROUTES.contact}
+                        <BookingButton
+                          source={`service-${service.title}`}
                           className="type-button inline-flex rounded-full border border-white/70 bg-white/92 px-5 py-2.5 text-[#ffffff] transition hover:bg-white"
                         >
                           {service.cta}
-                        </Link>
+                        </BookingButton>
                       </div>
                     </div>
                   </div>
@@ -388,12 +389,12 @@ export function MommyLanding() {
                   <p className="text-[1.4rem] font-semibold tracking-[-0.01em] text-[#5fb7d8]">
                     {product.price}
                   </p>
-                  <Link
-                    href={ROUTES.contact}
+                  <BookingButton
+                    source={`product-${product.name}`}
                     className="inline-flex rounded-full border border-[#dbeaf6] px-4 py-2 text-[0.82rem] font-semibold tracking-[0.08em] text-[#2b567d] transition hover:border-[#9bd5ec] hover:bg-[#f4fbff]"
                   >
                     Xem thêm
-                  </Link>
+                  </BookingButton>
                 </div>
               </article>
             ))}
@@ -521,12 +522,12 @@ export function MommyLanding() {
               >
                 Gọi ngay
               </a>
-              <Link
-                href={ROUTES.contact}
+              <BookingButton
+                source="landing-cta"
                 className="type-button rounded-full border border-white/40 px-6 py-3 text-white"
               >
                 Trang liên hệ
-              </Link>
+              </BookingButton>
             </div>
           </div>
         </div>

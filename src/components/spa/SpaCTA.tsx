@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import { ROUTES } from '@/constants';
+import { BookingButton } from '@/components/booking';
 
 /**
  * CTA đặt lịch / liên hệ cuối trang Spa.
@@ -28,12 +27,12 @@ export function SpaCTA() {
           >
             Gọi ngay
           </a>
-          <Link
-            href={ROUTES.contact}
+          <BookingButton
+            source="spa-cta"
             className="rounded-full border-2 border-white bg-white/5 px-10 py-4 font-semibold backdrop-blur-sm transition hover:bg-white/15"
           >
             Liên hệ
-          </Link>
+          </BookingButton>
         </div>
       </div>
     </section>

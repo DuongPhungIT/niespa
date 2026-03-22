@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ROUTES } from '@/constants';
+import { BookingButton } from '@/components/booking';
 
 export function HomeCTA() {
   return (
@@ -15,12 +16,12 @@ export function HomeCTA() {
           Nhận ngay mã giảm giá và các bài viết chăm sóc mẹ và bé.
         </p>
         <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <Link
-            href={ROUTES.contact}
+          <BookingButton
+            source="home-cta"
             className="rounded-full bg-white px-8 py-3 font-medium text-brand-primary transition hover:bg-pastel-cream"
           >
             Liên hệ tư vấn
-          </Link>
+          </BookingButton>
           <Link
             href={ROUTES.products}
             className="rounded-full border-2 border-white px-8 py-3 font-medium transition hover:bg-white/10"

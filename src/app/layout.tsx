@@ -3,6 +3,7 @@ import { DEFAULT_METADATA } from '@/utils/seo';
 import { JsonLdOrganization } from '@/components/shared/JsonLd';
 import { AnalyticsInit } from '@/components/shared/AnalyticsInit';
 import { Header, Footer } from '@/components/layout';
+import { BookingModal } from '@/components/booking';
 import '@/styles/globals.css';
 
 export const metadata: Metadata = {
@@ -32,6 +33,7 @@ export default function RootLayout({
       </head>
       <body className="flex min-h-screen flex-col overflow-x-hidden font-sans">
         <AnalyticsInit />
+        <BookingModal />
         <Header />
         <main className="min-w-0 flex-1">{children}</main>
         <Footer />
