@@ -48,7 +48,6 @@ export function Footer() {
             </p>
             <div className="type-meta mt-6 space-y-3">
               <p>CÔNG TY CỔ PHẦN THƯƠNG MẠI DỊCH VỤ NIESPA</p>
-              <p>Trụ sở chính: 16 Phạm Đình Toái, Xuân Hòa, TP.HCM</p>
               <p>Email: info@niespa.vn</p>
               <a
                 href={`tel:${SITE_CONFIG.phone}`}
@@ -88,15 +87,13 @@ export function Footer() {
 
           <div>
             <h3 className="type-overline text-[#66aecd]">
-              Chi nhánh nổi bật
+              Liên hệ
             </h3>
             <ul className="type-meta mt-5 space-y-5">
-              {branches.slice(0, 3).map((branch) => (
-                <li key={branch.region}>
-                  <div className="font-semibold text-[#234e70]">{branch.region}</div>
-                  <div>{branch.locations[0]}</div>
-                </li>
-              ))}
+              <li>
+                <div className="font-semibold text-[#234e70]">Địa chỉ:</div>
+                <div>Căn hộ B1107, Chung cư Thuận Việt, Phường Đông Hưng Thuận, Thành phố  Hồ Chí Minh</div>
+              </li>
             </ul>
             <div className="mt-6 flex items-center gap-3">
               <a
